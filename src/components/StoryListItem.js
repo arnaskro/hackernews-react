@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link }  from 'react-router-dom';
 
 export default class StoryListItem extends React.Component {
 
@@ -7,8 +8,8 @@ export default class StoryListItem extends React.Component {
         this.props = this.props.story;
     }
 
-    itemLink() {
-        return "/story/" + this.props.id;
+    itemLink(text) {
+        return <Link to={'/story/' + this.props.id}>{text}</Link>
     }
 
     getHost() {
@@ -36,11 +37,11 @@ export default class StoryListItem extends React.Component {
          if (this.props.type == "story")
             if (this.props.descendants > 0)
                 return  (
-                    <span className="comments has-comments"><a href={this.itemLink()}>{this.props.descendants} comments</a></span>
+                    <span className="comments has-comments">{this.itemLink(this.props.descendants + " comments")}</span>
                 );
             else 
                 return  (
-                    <span className="comments"><a href={this.itemLink()}>discuss</a></span>
+                    <span className="comments">{this.itemLink("discuss")}</span>
                 );
     }
 

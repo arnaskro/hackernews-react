@@ -5,7 +5,8 @@ import store, { history } from './reducers/';
 import css from './App.scss';
 import TopStories from './containers/TopStories';
 import StoryPage from './containers/StoryPage';
-import { BrowserRouter, Route, Link }  from 'react-router-dom';
+import NoMatch from './containers/NoMatch';
+import { BrowserRouter, Route, Link, Switch }  from 'react-router-dom';
 
 class App extends React.Component {
     render() {
@@ -17,8 +18,11 @@ class App extends React.Component {
                         <Link to={'/'} className="btn btn-link">Top Stories</Link>
                     </div>
                     <div className="main-content">
-                        <Route exact path="/" component={TopStories} />
-                        <Route exact path="/story/:id" component={StoryPage} />
+                        <Switch>
+                            <Route exact path="/" component={TopStories} />
+                            <Route exact path="/story/:id" component={StoryPage} />
+                            <Route component={NoMatch}/>
+                        </Switch>
                     </div>
                 </div>
             </BrowserRouter>
