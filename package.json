@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "history": "^4.6.1",
+    "moment": "^2.18.1",
+    "react-moment": "^0.6.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
