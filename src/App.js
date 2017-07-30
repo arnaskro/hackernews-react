@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store, { history } from './reducers/'
+import store, { history } from './reducers/';
 import css from './App.scss';
+import TopStories from './containers/TopStories';
 import { BrowserRouter, Route, Link }  from 'react-router-dom';
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
                         return (
                             <div className="text-center">
                                 <h1>App is ready!</h1>
+                                <TopStories />
                             </div>
                         )
                     }} />
