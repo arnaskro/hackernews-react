@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store, { history } from './reducers/';
 import css from './App.scss';
 import TopStories from './containers/TopStories';
+import StoryPage from './containers/StoryPage';
 import { BrowserRouter, Route, Link }  from 'react-router-dom';
 
 class App extends React.Component {
@@ -13,16 +14,11 @@ class App extends React.Component {
                 <div className="container">
                     <br />
                     <div className="text-center">
-                        <Link to={'/'} className="btn btn-link">Home</Link>
+                        <Link to={'/'} className="btn btn-link">Top Stories</Link>
                     </div>
                     <div className="main-content">
-                        <Route exact path="/" render={(props) => {
-                            return (
-                                <div>
-                                    <TopStories />
-                                </div>
-                            )
-                        }} />
+                        <Route exact path="/" component={TopStories} />
+                        <Route exact path="/story/:id" component={StoryPage} />
                     </div>
                 </div>
             </BrowserRouter>
