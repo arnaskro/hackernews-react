@@ -44,6 +44,12 @@ $metaSize: 0.75em;
 $metaColor: #333333;
 $grayBG: #f3f3f3;
 
+a {
+  a:hover {
+    cursor: pointer;
+  }
+}
+
 .main-content {
   display: block;
   margin-top: 10px;
