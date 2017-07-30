@@ -39,3 +39,53 @@
     transform: scale(1.0);
   }
 }
+
+$metaSize: 0.75em;
+$metaColor: #333333;
+$grayBG: #f3f3f3;
+
+.main-content {
+  display: block;
+  margin-top: 10px;
+}
+
+.stories-list {
+  padding: 0;
+
+  .story-item {
+    padding: 22px 8px;
+
+    .host, .meta {
+      font-size: $metaSize;
+      color: $metaColor;
+
+      a {
+        color: $metaColor;
+      }
+    }
+
+    .meta {
+      
+
+      .author {
+        font-weight: bold;
+      }
+
+      .comments {
+
+        &:before {
+          content: " | ";
+          font-weight: normal;
+        }
+
+        &.has-comments {
+          font-weight: bold;
+        }
+      }
+    }
+
+    &:nth-child(2n) {
+      background-color: $grayBG;
+    }
+  }
+}

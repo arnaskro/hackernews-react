@@ -1,4 +1,5 @@
 import * as api from '../api';
+import Constants from '../constants';
 
 export const types = {
     FETCH_TOP_STORIES_START: "FETCH_TOP_STORIES_START",
@@ -16,7 +17,7 @@ export const fetchTopStories = (page = 1) => {
         fetch(api.TOP_STORIES())
             .then(res => res.json())
             .then(ids => {
-                var per_page = 30;
+                var per_page = Constants.PER_PAGE;
                 var slice_pos = per_page * page;
 
                 ids = ids.slice(slice_pos - per_page, slice_pos);

@@ -8,21 +8,26 @@ export default class StoryListItem extends React.Component {
     }
 
     itemLink() {
-        return "www.google.com";
+        return "/story/" + this.props.id;
+    }
+
+    getHost() {
+        var host = (new URL(this.props.url)).hostname;
+        return <a href={"//" + host}>{host.replace("www.", "")}</a>;
     }
 
     getTitle() {
-        if (this.props.url && this.props.url.length > 0)
-            return (<a href={this.props.url}>{this.props.title}</a>);
-        else
-            return (this.props.title);
+        return !!this.props.url ? 
+            <span><a href={this.props.url}>{this.props.title}</a> <span className="host">({this.getHost()})</span></span>
+            : 
+            this.props.title;
     }
 
     getMeta() {
         //71 points by kbp 4 hours ago | hide | 3 comments
         return (
             <div>
-                <span>{this.props.score}</span> points by <span>{this.props.by}</span> <span><Moment unix fromNow>{this.props.time}</Moment></span> {this.getCommentsMeta()}
+                <span className="score">{this.props.score}</span> points by <span className="author">{this.props.by}</span> <span className="time"><Moment unix fromNow>{this.props.time}</Moment></span> {this.getCommentsMeta()}
             </div>
         );
     }
@@ -31,21 +36,20 @@ export default class StoryListItem extends React.Component {
          if (this.props.type == "story")
             if (this.props.descendants > 0)
                 return  (
-                    <span><a href={this.itemLink()}>{this.props.descendants} comments</a></span>
+                    <span className="comments has-comments"><a href={this.itemLink()}>{this.props.descendants} comments</a></span>
                 );
             else 
                 return  (
-                    <span><a href={this.itemLink()}>discuss</a></span>
+                    <span className="comments"><a href={this.itemLink()}>discuss</a></span>
                 );
     }
 
     render() {
         
         return (
-            <li>
-                {this.getTitle()}
-                <br />
-                {this.getMeta()}
+            <li className="story-item">
+                <div className="title">{this.getTitle()}</div>
+                <div className="meta">{this.getMeta()}</div>
             </li>
         )
     }

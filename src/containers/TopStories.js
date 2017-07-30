@@ -12,7 +12,7 @@ class TopStories extends React.Component {
         let stories = this.props.data;
 
         if (stories && stories.length > 0) 
-            return <StoryList stories={stories} />; 
+            return <StoryList stories={stories} page={this.props.page}/>; 
         else if (!this.props.fetched && !this.props.fetching && this.props.error == null)
             this.props.actions.fetchTopStories();
         else if (!this.props.fetched && this.props.fetching)
@@ -27,10 +27,8 @@ class TopStories extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="row">
-                    {this.listStories()}
-                </div>
+            <div className="row">
+                {this.listStories()}
             </div>
         )
     }
