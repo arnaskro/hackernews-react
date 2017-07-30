@@ -3,7 +3,8 @@ import * as api from '../api';
 export const types = {
     FETCH_STORY_START: "FETCH_STORY_START",
     FETCH_STORY_FULLFILLED: "FETCH_STORY_FULLFILLED",
-    FETCH_STORY_ERROR: "FETCH_STORY_ERROR"
+    FETCH_STORY_ERROR: "FETCH_STORY_ERROR",
+    STORY_RESET: "STORY_RESET"
 };
 
 export const fetchStory = (id) => {
@@ -28,5 +29,13 @@ export const fetchStory = (id) => {
                     payload: res
                 });
             })
+    }
+}
+
+export const clearStory = () => {
+    return function(dispatch) {
+        dispatch({ 
+            type: types.STORY_RESET
+        }); 
     }
 }

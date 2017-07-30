@@ -4,6 +4,7 @@ const initialState = {
     fetching: false,
     fetched: false,
     error: null,
+    shown: false,
     id: null, 
     data: {}
 };
@@ -30,6 +31,8 @@ const StoryReducer = (state = initialState, action) => {
                 fetched: false,
                 error: action.payload
             });
+        case types.STORY_RESET:
+            return Object.assign({}, state, initialState);
         default: 
             return state;
     }

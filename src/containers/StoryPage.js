@@ -8,19 +8,19 @@ import { bindActionCreators } from 'redux';
 
 class StoryPage extends React.Component {
 
+    componentWillUnmount() {
+        this.props.actions.clearStory();
+    }
+
     showStory() {
         let story = this.props.data;
 
-        if (this.props.fetched && !this.props.fetching && story) 
+        if (this.props.fetched && !this.props.fetching) 
             return <Story story={story}/>; 
-        else if (!this.props.fetched && !this.props.fetching && this.props.error == null)
+        else if (!this.props.fetched && !this.props.fetching)
             this.props.actions.fetchStory(this.props.match.params.id);
         else if (!this.props.fetched && this.props.fetching)
             return <Spinner />;
-        else if (!this.props.fetched && !this.props.fetching && this.props.error != null)
-            alert(this.props.error)
-        else
-            console.log("I dont even know what is going on anymore...")
     }
     
     render() {
@@ -33,7 +33,6 @@ class StoryPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.story)
     return {
         data: state.story.data,
         id: state.story.id,
