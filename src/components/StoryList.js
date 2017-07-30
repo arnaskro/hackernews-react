@@ -8,8 +8,8 @@ export default class StoryList extends React.Component {
             <ol>
                 {this.props.stories.map((story) => 
                     <StoryListItem 
-                        key={story}  
-                        title={story}
+                        key={story.id}  
+                        story={story}
                         />)}
             </ol>
         )

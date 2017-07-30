@@ -17,8 +17,7 @@ class App extends React.Component {
                     </div><br />
                     <Route exact path="/" render={(props) => {
                         return (
-                            <div className="text-center">
-                                <h1>App is ready!</h1>
+                            <div>
                                 <TopStories />
                             </div>
                         )

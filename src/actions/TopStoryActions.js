@@ -15,11 +15,34 @@ export const fetchTopStories = (page = 1) => {
         
         fetch(api.TOP_STORIES())
             .then(res => res.json())
-            .then(data => {
-                dispatch({ 
-                    type: types.FETCH_TOP_STORIES_FULLFILLED,
-                    payload: data
-                });
+            .then(ids => {
+                var per_page = 30;
+                var slice_pos = per_page * page;
+
+                ids = ids.slice(slice_pos - per_page, slice_pos);
+
+                // I don't want just the ids of stories
+                // so i'm going to fetch each story
+                // and only then return the data
+                var data = [];
+
+                for (var i = 0; i < ids.length; i++) {
+                    // Get items
+                    fetch(api.GET_ITEM(ids[i]))
+                        .then(res => res.json())
+                        .then(story => {
+                            data.push(story);
+
+                            // If all stories are fetched, then sort the data & dispatch 
+                            if (data.length == ids.length) {
+                                dispatch({ 
+                                    type: types.FETCH_TOP_STORIES_FULLFILLED,
+                                    payload: data.sort((a, b) => ids.indexOf(a[1]) - ids.indexOf(b[1]))
+                                });
+                            }
+                        })
+                }
+                
             })
             .catch(res => {
                 dispatch({ 
