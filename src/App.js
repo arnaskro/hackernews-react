@@ -7,6 +7,7 @@ import TopStories from './containers/TopStories';
 import StoryPage from './containers/StoryPage';
 import NoMatch from './containers/NoMatch';
 import { BrowserRouter, Route, Link, Switch }  from 'react-router-dom';
+import '../semantic/dist/semantic.min.css';
 
 class App extends React.Component {
     render() {
