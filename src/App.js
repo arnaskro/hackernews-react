@@ -7,18 +7,19 @@ import TopStories from './containers/TopStories';
 import StoryPage from './containers/StoryPage';
 import NoMatch from './containers/NoMatch';
 import { BrowserRouter, Route, Link, Switch }  from 'react-router-dom';
-import '../semantic/dist/semantic.min.css';
 
 class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <div className="container">
+                <div>
                     <br />
-                    <div className="text-center">
-                        <Link to={'/'} className="btn btn-link">Top Stories</Link>
+                    <div className="ui stackalbe container menu">
+                        <Link to={'/'} className="item active">Top Stories</Link>
+                        <a className="item">News</a>
+                        <a className="item">Comments</a>
                     </div>
-                    <div className="main-content">
+                    <div className="ui container main-content">
                         <Switch>
                             <Route exact path="/" component={TopStories} />
                             <Route exact path="/story/:id" component={StoryPage} />
