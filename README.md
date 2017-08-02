@@ -11,7 +11,7 @@ I created this Hackernews react client app in order try out connecting it to the
 5. Webpack 2
 
 # Pages
-Currently the app contains only 2 pages:
+The app currently has only 2 pages:
 
 | # | Page | Path |
 | --- | --- | --- |
