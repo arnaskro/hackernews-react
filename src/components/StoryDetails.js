@@ -2,11 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import { Link }  from 'react-router-dom';
 
-export default class StoryListItem extends React.Component {
-
-    componentWillMount() {
-        this.props = this.props.story;
-    }
+export default class StoryDetails extends React.Component {
 
     itemLink(text) {
         return <Link to={'/story/' + this.props.id}>{text}</Link>
@@ -47,11 +43,13 @@ export default class StoryListItem extends React.Component {
 
     render() {
         
+        this.props = this.props.story;
+        
         return (
-            <li className="story-item">
+            <div className="story-item">
                 <div className="title">{this.getTitle()}</div>
                 <div className="meta">{this.getMeta()}</div>
-            </li>
+            </div>
         )
     }
 }

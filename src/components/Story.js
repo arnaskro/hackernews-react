@@ -1,4 +1,5 @@
 import React from 'react';
+import StoryDetails from './StoryDetails';
 
 export default class Story extends React.Component {
 
@@ -9,7 +10,7 @@ export default class Story extends React.Component {
     render() {
         return (
             <div className="story">
-                {this.props.title}
+                <StoryDetails key={this.props.id} story={this.props} />
             </div>
         )
     }

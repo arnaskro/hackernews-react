@@ -25,7 +25,7 @@ class StoryPage extends React.Component {
     
     render() {
         return (
-            <div className="row">
+            <div className="ui segment">
                 {this.showStory()}
             </div>
         )

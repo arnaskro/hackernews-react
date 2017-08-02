@@ -2,6 +2,10 @@ $metaSize: 0.75em;
 $metaColor: #333333;
 $grayBG: #f3f3f3;
 
+body {
+  font-size: 16px;
+}
+
 a {
   a:hover {
     cursor: pointer;
@@ -13,43 +17,46 @@ a {
   margin-top: 10px;
 }
 
-.stories-list {
+.story-item {
+  padding: 15px 8px;
 
-  .story-item {
-    padding: 15px 8px;
+  .title {
+    a {
+      font-weight: bold;
+    }
+  }
 
-    .host, .meta {
-      font-size: $metaSize;
+  .host, .meta {
+    font-size: $metaSize;
+    color: $metaColor;
+
+    a {
       color: $metaColor;
+    }
+  }
 
-      a {
-        color: $metaColor;
-      }
+  .meta {
+    
+
+    .author {
+      font-weight: bold;
     }
 
-    .meta {
-      
+    .comments {
 
-      .author {
+      &:before {
+        content: " | ";
+        font-weight: normal;
+      }
+
+      &.has-comments {
         font-weight: bold;
       }
-
-      .comments {
-
-        &:before {
-          content: " | ";
-          font-weight: normal;
-        }
-
-        &.has-comments {
-          font-weight: bold;
-        }
-      }
     }
+  }
 
-    &:nth-child(2n) {
-      background-color: $grayBG;
-    }
+  &:nth-child(2n) {
+    background-color: $grayBG;
   }
 }
 
