@@ -16,7 +16,7 @@ class StoryPage extends React.Component {
         let story = this.props.data;
 
         if (this.props.fetched && !this.props.fetching) 
-            return <StoryDetails key={story.id} story={story} links={false} />
+            return <StoryDetails key={story.id} story={story} />
         else if (!this.props.fetched && !this.props.fetching)
             this.props.actions.fetchStory(this.props.match.params.id);
         else if (!this.props.fetched && this.props.fetching)
