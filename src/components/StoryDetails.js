@@ -30,7 +30,7 @@ export default class StoryDetails extends React.Component {
     }
 
     getCommentsMeta() {
-         if (this.props.type == "story")
+         if (this.props.links && this.props.type == "story")
             if (this.props.descendants > 0)
                 return  (
                     <span className="comments has-comments">{this.itemLink(this.props.descendants + " comments")}</span>
@@ -42,9 +42,9 @@ export default class StoryDetails extends React.Component {
     }
 
     render() {
-        
+        var links = this.props.links;
         this.props = this.props.story;
-        
+        this.props.links = (links == null || links === undefined) ?  true : links;
         return (
             <div className="story-item">
                 <div className="title">{this.getTitle()}</div>
