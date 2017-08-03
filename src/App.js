@@ -7,17 +7,22 @@ import TopStories from './containers/TopStories';
 import StoryPage from './containers/StoryPage';
 import NoMatch from './containers/NoMatch';
 import { BrowserRouter, Route, Link, Switch }  from 'react-router-dom';
+import logo from './images/logo.png'
 
 class App extends React.Component {
     render() {
+        console.log(logo)
         return (
             <BrowserRouter>
                 <div>
                     <br />
                     <div className="ui stackalbe container menu">
-                        <Link to={'/'} className="item active">Top Stories</Link>
-                        <a className="item">News</a>
-                        <a className="item">Comments</a>
+                        <div className="item">
+                            <img src={"." + logo} />
+                        </div>
+                        <Link to={'/'} className="item active">Stories</Link>
+                        {/* <a className="item">News</a>
+                        <a className="item">Comments</a> */}
                     </div>
                     <div className="ui container main-content">
                         <Switch>
